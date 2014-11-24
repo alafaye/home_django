@@ -7,8 +7,8 @@ from sapphire.blog.models import *
 # Create your views here.
 
 
-def main(request):
-    posts = Post.objects.all().order_by("-created")
+def index(request):
+    posts = Post.objects.all().order_by("-creation_date")
     paginator = Paginator(posts, 9)
 
     try:
