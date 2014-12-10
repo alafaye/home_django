@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
-from django.shortcuts import render_to_response
+from sapphire import settings
 
 from sapphire.blog.models import *
 # Create your views here.
@@ -21,4 +21,4 @@ def index(request):
     except (InvalidPage, EmptyPage):
         posts = paginator.page(paginator.num_pages)
 
-    return render_to_response("list.html", dict(posts=posts, user=request.user))
+    return render_to_response("list.html", dict(posts=posts, user=request.user, MEDIA_URL=settings.MEDIA_URL))

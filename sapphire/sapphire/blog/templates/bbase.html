@@ -1,37 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html>
-<head> <title>{% block title %}Sapphire Blog{% endblock %}</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<meta name="description" content="homepage">
-<meta name="author" content="Alexandre Lafaye">
-<link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
-<link rel="icon" href="../favicon/favicon.ico">
-</head>
+{% extends "home.html" %}
 
-<body>
-    <div id="sidebar"> {% block sidebar %} {% endblock %} </div>
-    <div id="container">
-        <div id="menu">
-            {% block nav-global %}
+{% block nav-global %}
 
-                <!-- MENU -->
-                <h3>Sapphire Blog</h3>
-                {% if user.is_staff %}
-		<a href="{% url 'admin:index' %}">Admin</a>
-                <a href="{% url 'admin:blog_post_add' %}">Add post</a>
-                {% endif %}
+<!-- MENU -->
+<h3>Sapphire Blog</h3>
+{% if user.is_staff %}
+<a href="{% url 'admin:index' %}">Admin</a>
+<a href="{% url 'admin:blog_post_add' %}">Add post</a>
+{% endif %}
+{% endblock %}
 
-            {% endblock %}
-        </div>
-
-        <div id="content">
-            {% block content %}{% endblock %}
-        </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-</body>
-</html>
