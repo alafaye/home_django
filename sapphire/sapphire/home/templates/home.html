@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html>
+    <head> <title>{% block title %}Sapphire{% endblock %}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="{{MEDIA_URL}}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<meta name="description" content="homepage">
+	<meta name="author" content="Alexandre Lafaye">
+	<link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="{{MEDIA_URL}}favicon/favicon.ico">
+    </head>
+
+    <body>
+	<div id="topbar">
+	    {% block topbar %}
+	    <li.list-inline><a class="devider" href="/blog" title=Blog> Blog </a></li>
+	    <li.list-inline><a class="devider" href="/movies" title=Films/Musique> Films/Musiques </a></li>
+	    {% if user.is_staff %}
+	    <li.list-inline><a class="devider" href="/films" title=Films/Musique> Films/Musiques </a></li>
+	    <li.list-inline><a class="devider" href="/files" title=NAS> Fichiers </a></li>
+	    <li.list-inline><a class="devider" href="/virtual" title=Virtual> Virtual </a></li>
+	    {% endif %}
+	    {% endblock %}
+	    <div id="sidebar"> {% block sidebar %}{% endblock %} </div>
+	    <p>
+	    <div id="container">
+		<div id="menu">
+		    {% block nav-global %}{% endblock %}
+		</div>
+
+		<div id="content">
+		    {% block content %}{% endblock %}
+		</div>
+	    </div>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="{{MEDIA_URL}}bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>
